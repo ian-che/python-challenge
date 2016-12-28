@@ -1,0 +1,27 @@
+#!/usr/bin/env python
+
+import urllib
+
+content = urllib.urlopen("http://www.pythonchallenge.com/pc/def/linkedlist.php?").read()
+#print content
+
+
+def next_url(next_string):
+    content = urllib.urlopen("http://www.pythonchallenge.com/pc/def/linkedlist.php?nothing="+next_string).read()
+    print content
+
+    index = content.rfind("html")
+    print index
+    if index > 0:
+        return 
+
+    index = content.rfind("next nothing is")
+#    print index
+    if index <> 0:
+       next = content[16+index:]
+       print next
+       next_url(next)
+
+next_url("12345")
+
+
